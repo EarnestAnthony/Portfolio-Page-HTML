@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Portfolio Page</title>
+    <title>Drawing Canvas</title>
+    <meta property="og:title" content="Portfolio Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Arial;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.55;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <div data-role="Header" class="home-navbar-container">
+          <div class="home-navbar">
+            <span class="home-heading">.earnestanthony</span>
+            <div data-role="MobileMenu" class="home-mobile-menu">
+              <div class="home-container1">
+                <span class="Card-Heading home-heading1">Logo</span>
+                <div data-role="CloseMobileMenu" class="home-close-menu">
+                  <svg viewBox="0 0 1024 1024" class="home-icon">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="home-links-container">
+                <span class="home-link Navbar-Link">About</span>
+                <span class="home-link1 Navbar-Link">Experience</span>
+                <span class="home-link2 Navbar-Link">Portofolio</span>
+                <span class="Navbar-Link">Contact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-section-separator"></div>
+        <div class="home-section-separator1"></div>
+        <div class="home-container2">
+          <div class="home-hero">
+            <div class="home-container3">
+              <div class="home-container4">
+                <h1 class="home-heading2 Section-Heading">a random website</h1>
+              </div>
+            </div>
+            <div class="home-container5">
+              <div class="home-container6">
+                <a href="earnestanthony.html" class="home-navlink">about</a>
+              </div>
+            </div>
+            <img
+              alt="image"
+              src="https://play.teleporthq.io/static/svg/default-img.svg"
+              class="home-image"
+            />
+          </div>
+        </div>
+        <div class="home-about">
+          <div class="home-max-content-width-container">
+            <div class="home-heading-container">
+              <h1 class="Section-Heading home-text">random canvas</h1>
+            </div>
+            <div class="home-content-container"></div>
+            <div class="home-container7">
+              <div class="home-container8">
+                <style>
+                  #canvas {
+                    margin: 0 auto;
+                  }
+                  #clearButton {
+                    display: block;
+                    margin: 0 auto;
+                  }
+                </style>
+
+                <canvas id="canvas" width="1000" height="480"></canvas>
+                <button id="clearButton">Clear</button>
+
+                <script>
+                  const canvas = document.getElementById('canvas');
+                  const context = canvas.getContext('2d');
+                  let isDrawing = false;
+
+                  canvas.addEventListener('mousedown', startDrawing);
+                  canvas.addEventListener('mousemove', draw);
+                  canvas.addEventListener('mouseup', stopDrawing);
+                  canvas.addEventListener('mouseout', stopDrawing);
+
+                  document.getElementById('clearButton').addEventListener('click', clearCanvas);
+
+                  function startDrawing(e) {
+                    isDrawing = true;
+                    draw(e);
+                  }
+
+                  function draw(e) {
+                    if (!isDrawing) return;
+                    context.lineWidth = 5;
+                    context.lineCap = 'round';
+                    context.strokeStyle = 'black';
+                    context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                    context.stroke();
+                    context.beginPath();
+                    context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                  }
+
+                  function stopDrawing() {
+                    isDrawing = false;
+                    context.beginPath();
+                  }
+
+                  function clearCanvas() {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                  }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-section-separator2"></div>
+        <div class="home-pictures">
+          <div class="home-heading-container1">
+            <h1 class="home-text1">
+              <span class="home-text2 Section-Heading">Random</span>
+              <br />
+            </h1>
+          </div>
+          <div class="home-logo-container">
+            <img alt="image" src="public/default-img.svg" class="home-logo" />
+            <img alt="image" src="public/default-img.svg" class="home-logo1" />
+            <img alt="image" src="public/default-img.svg" class="home-logo2" />
+            <img alt="image" src="public/default-img.svg" class="home-logo3" />
+          </div>
+        </div>
+        <div class="home-subscribe"></div>
+        <div class="home-footer-container"></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  </body>
+</html>
